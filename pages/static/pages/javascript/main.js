@@ -129,7 +129,7 @@ function imageToBase64(img) {
 function change_color() {
     for (let i = 0; i < 81; i++) {
         if ($('#input-puzzle .box')[i].value.length === 1) {
-            $('#output-puzzle .box')[i].style.color = '#000099';
+            $('#output-puzzle .box')[i].style.color = '#00ff00';
         }
     }}
 
@@ -159,9 +159,10 @@ $('#img-file').on('change', function (e) {
 
 
 $('#btn-solve').on('click', function (){
+    $('#output-puzzle').toggleClass('loading');
+    $('#solution-container').show(1000);
     console.log(extract_string());
     change_color();
-    $('#output-puzzle').toggleClass('loading');
     $.ajax({
         url: '/api/solver/',
         type: 'POST',
@@ -172,14 +173,19 @@ $('#btn-solve').on('click', function (){
             console.log(response);
             import_solved_string(response['puzzle'], '#output-puzzle .box');
             console.log('solved');
+            // $('#solution-container').toggle(1000);
             $('#output-puzzle').toggleClass('loading');
+
         }
     })
 });
 
 
 $('#btn-generate').on('click', function () {
-   $('#input-puzzle').toggleClass('loading');
+    $('#solution-container').hide(1000);
+    if( $('#input-puzzle').attr('class') !== 'loading'){
+        $('#input-puzzle').toggleClass('loading');
+    }
     console.log('make was clicked');
     clear_puzzle('#input-puzzle .box');
     clear_puzzle('#output-puzzle .box');
@@ -191,35 +197,26 @@ $('#btn-generate').on('click', function () {
            console.log(response);
            import_solved_string(response['puzzle'], '#input-puzzle .box');
            $('#input-puzzle').toggleClass('loading');
+
        }
     });
 });
 
 
 $('#btn-clear').on('click', function(){
+    $('#solution-container').hide(1000);
     console.log('clear clicked');
     clear_puzzle('#input-puzzle .box');
-    clear_puzzle('#output-puzzle .box')
-});
-
-
-$('#btn-count').on('click', function clue_count() {
-    console.log('count clicked');
-    let string = extract_string();
-    $('#clue-count').value = 81 - string.split("0").length-1;
-    console.log(81 - (string.split("0").length-1));
-});
-
-
-$('.test1').on('click', function () {
-    if ($(this).text() === 'blank'){
-        $('.value').text('')
+    clear_puzzle('#output-puzzle .box');
+    if( $('#input-puzzle').attr('class') == 'loading'){
+        $('#input-puzzle').toggleClass('loading');
     }
-    else {
-        let val = $(this).text();
-        $('.value').text(val)
+    if( $('#output-puzzle').attr('class') == 'loading'){
+        $('#output-puzzle').toggleClass('loading');
     }
+
 });
+
 
 
 $('#input-puzzle').keyup(function () {
@@ -244,6 +241,12 @@ $('#input-puzzle').keyup(function () {
         }
     });
 });
+
+
+
+
+
+
 
 generate_blank_puzzle();
 generate_filled_solution();

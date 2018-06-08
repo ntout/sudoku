@@ -13,43 +13,37 @@
 
 
 
-<h1 id="header">Sudoku Solver</h1>
+    <h1 id="header">Sudoku Solver</h1>
 
+    <div id="content">
+        <div id="working-container">
+            <div id="table-container">
+                <!--<div id=""></div>-->
+                <div id="puzzle-container" class="table">
+                    <!--<h3 class="puzzle-header">Working Sudoku</h3>-->
+                    <table id="input-puzzle" class="puz-table"></table>
+                </div>
 
-<div id="table-container">
+                <div id="solution-container" hidden class="table">
+                    <!--<h3 class="puzzle-header">Solution</h3>-->
+                    <table id="output-puzzle" class="puz-table"></table>
+                </div>
+            </div>
+        </div>
 
-    <div id="puzzle-container">
-        <h3 class="puzzle-header">Working Puzzle</h3>
-        <table id="input-puzzle" class="puz-table"></table>
+        <div id="img-container">
+            <div id="btn-container">
+                <div id="btn-solve" class="btn">SOLVE</div>
+                <div id="btn-generate" class="btn">GENERATE</div>
+                <div id="btn-clear" class="btn">CLEAR</div>
+            </div>
+            <img id="image-upload" src="https://dummyimage.com/300x300/0C7C59/ffffff.png&text=upload+image" alt="your image" />
+            <input type='file' id="img-file" >
+        </div>
+
     </div>
 
-    <div id="solution-container">
-        <h3 class="puzzle-header">Solution</h3>
-        <table id="output-puzzle" class="puz-table"></table>
-    </div>
 
-    <div id="img-container">
-        <h3 class="puzzle-header">Image</h3>
-        <img id="image-upload" src="#" alt="your image" />
-    </div>
-
-</div>
-
-<div id="btn-container">
-    <button id="btn-solve">SOLVE</button>
-
-    <!--<button id="btn-learn">LEARN</button>-->
-
-    <button id="btn-generate">MAKE</button>
-
-    <button id="btn-clear">CLEAR</button>
-
-    <button id="btn-count">COUNT</button>
-    <input type='file' id="img-file">
-
-    <button id="btn-test">TEST</button>
-
-</div>
 
 
 
