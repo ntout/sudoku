@@ -26,5 +26,6 @@ urlpatterns = [
     path('api/learner/', p_views.learn, name='learn'),
     path('api/generate/', p_views.generate, name='generate'),
     path('api/extract/', p_views.extract, name='extract'),
-    path('api/whatever/', p_views.whatever, name='whatever')
+    path('api/upload/', p_views.upload, name='upload'),
+    path('api/validate/', p_views.validate, name='validate')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

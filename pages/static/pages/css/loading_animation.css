@@ -1,0 +1,229 @@
+
+#myProgress {
+  width: 100%;
+  background-color: #ddd;
+}
+
+#myBar {
+  width: 1%;
+  height: 30px;
+  background-color: #4CAF50;
+}
+
+
+
+
+
+
+
+
+.loading tr:nth-child(9) td,
+.loading tr:nth-child(8) td,
+.loading tr:nth-child(7) td,
+.loading tr:nth-child(6) td,
+.loading tr:nth-child(5) td,
+.loading tr:nth-child(4) td,
+.loading tr:nth-child(3) td,
+.loading tr:nth-child(2) td,
+.loading tr:nth-child(1) td
+{
+  -webkit-animation: sk-cubeGridScaleDelay 1.7s infinite ease-in-out;
+            animation: sk-cubeGridScaleDelay 1.7s infinite ease-in-out;
+}
+
+.loading tr:nth-child(9) td:nth-child(1)
+{
+  -webkit-animation-delay: 0.0s;
+          animation-delay: 0.0s;
+}
+
+.loading tr:nth-child(9) td:nth-child(2),
+.loading tr:nth-child(8) td:nth-child(1)
+{
+  -webkit-animation-delay: 0.1s;
+          animation-delay: 0.1s;
+}
+
+.loading tr:nth-child(9) td:nth-child(3),
+.loading tr:nth-child(8) td:nth-child(2),
+.loading tr:nth-child(7) td:nth-child(1)
+{
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+}
+
+.loading tr:nth-child(9) td:nth-child(4),
+.loading tr:nth-child(8) td:nth-child(3),
+.loading tr:nth-child(7) td:nth-child(2),
+.loading tr:nth-child(6) td:nth-child(1)
+{
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+}
+
+.loading tr:nth-child(9) td:nth-child(5),
+.loading tr:nth-child(8) td:nth-child(4),
+.loading tr:nth-child(7) td:nth-child(3),
+.loading tr:nth-child(6) td:nth-child(2),
+.loading tr:nth-child(5) td:nth-child(1)
+{
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+
+.loading tr:nth-child(9) td:nth-child(6),
+.loading tr:nth-child(8) td:nth-child(5),
+.loading tr:nth-child(7) td:nth-child(4),
+.loading tr:nth-child(6) td:nth-child(3),
+.loading tr:nth-child(5) td:nth-child(2),
+.loading tr:nth-child(4) td:nth-child(1)
+{
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+}
+
+.loading tr:nth-child(9) td:nth-child(7),
+.loading tr:nth-child(8) td:nth-child(6),
+.loading tr:nth-child(7) td:nth-child(5),
+.loading tr:nth-child(6) td:nth-child(4),
+.loading tr:nth-child(5) td:nth-child(3),
+.loading tr:nth-child(4) td:nth-child(2),
+.loading tr:nth-child(3) td:nth-child(1)
+{
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s;
+}
+
+.loading tr:nth-child(9) td:nth-child(8),
+.loading tr:nth-child(8) td:nth-child(7),
+.loading tr:nth-child(7) td:nth-child(6),
+.loading tr:nth-child(6) td:nth-child(5),
+.loading tr:nth-child(5) td:nth-child(4),
+.loading tr:nth-child(4) td:nth-child(3),
+.loading tr:nth-child(3) td:nth-child(2),
+.loading tr:nth-child(2) td:nth-child(1)
+{
+  -webkit-animation-delay: 0.7s;
+          animation-delay: 0.7s;
+}
+
+.loading tr:nth-child(9) td:nth-child(9),
+.loading tr:nth-child(8) td:nth-child(8),
+.loading tr:nth-child(7) td:nth-child(7),
+.loading tr:nth-child(6) td:nth-child(6),
+.loading tr:nth-child(5) td:nth-child(5),
+.loading tr:nth-child(4) td:nth-child(4),
+.loading tr:nth-child(3) td:nth-child(3),
+.loading tr:nth-child(2) td:nth-child(2),
+.loading tr:nth-child(1) td:nth-child(1)
+{
+  -webkit-animation-delay: 0.8s;
+          animation-delay: 0.8s;
+}
+
+
+.loading tr:nth-child(8) td:nth-child(9),
+.loading tr:nth-child(7) td:nth-child(8),
+.loading tr:nth-child(6) td:nth-child(7),
+.loading tr:nth-child(5) td:nth-child(6),
+.loading tr:nth-child(4) td:nth-child(5),
+.loading tr:nth-child(3) td:nth-child(4),
+.loading tr:nth-child(2) td:nth-child(3),
+.loading tr:nth-child(1) td:nth-child(2)
+{
+  -webkit-animation-delay: 0.9s;
+          animation-delay: 0.9s;
+}
+
+
+.loading tr:nth-child(7) td:nth-child(9),
+.loading tr:nth-child(6) td:nth-child(8),
+.loading tr:nth-child(5) td:nth-child(7),
+.loading tr:nth-child(4) td:nth-child(6),
+.loading tr:nth-child(3) td:nth-child(5),
+.loading tr:nth-child(2) td:nth-child(4),
+.loading tr:nth-child(1) td:nth-child(3)
+{
+  -webkit-animation-delay: 1.0s;
+          animation-delay: 1.0s;
+}
+
+
+.loading tr:nth-child(6) td:nth-child(9),
+.loading tr:nth-child(5) td:nth-child(8),
+.loading tr:nth-child(4) td:nth-child(7),
+.loading tr:nth-child(3) td:nth-child(6),
+.loading tr:nth-child(2) td:nth-child(5),
+.loading tr:nth-child(1) td:nth-child(4)
+{
+  -webkit-animation-delay: 1.0s;
+          animation-delay: 1.0s;
+}
+
+
+.loading tr:nth-child(5) td:nth-child(9),
+.loading tr:nth-child(4) td:nth-child(8),
+.loading tr:nth-child(3) td:nth-child(7),
+.loading tr:nth-child(2) td:nth-child(6),
+.loading tr:nth-child(1) td:nth-child(5)
+{
+  -webkit-animation-delay: 1.2s;
+          animation-delay: 1.2s;
+}
+
+
+.loading tr:nth-child(4) td:nth-child(9),
+.loading tr:nth-child(3) td:nth-child(8),
+.loading tr:nth-child(2) td:nth-child(7),
+.loading tr:nth-child(1) td:nth-child(6)
+{
+      -webkit-animation-delay: 1.3s;
+              animation-delay: 1.3s;
+}
+
+
+.loading tr:nth-child(3) td:nth-child(9),
+.loading tr:nth-child(2) td:nth-child(8),
+.loading tr:nth-child(1) td:nth-child(7)
+{
+  -webkit-animation-delay: 1.4s;
+          animation-delay: 1.4s;
+}
+
+
+.loading tr:nth-child(2) td:nth-child(9),
+.loading tr:nth-child(1) td:nth-child(8)
+{
+  -webkit-animation-delay: 1.5s;
+          animation-delay: 1.5s;
+}
+
+
+.loading tr:nth-child(1) td:nth-child(9)
+{
+  -webkit-animation-delay: 1.6s;
+          animation-delay: 1.6s;
+}
+
+
+@-webkit-keyframes sk-cubeGridScaleDelay {
+  0%, 70%, 100% {
+    -webkit-transform: scale3D(1, 1, 1);
+            transform: scale3D(1, 1, 1);
+  } 35% {
+    -webkit-transform: scale3D(0, 0, 1);
+            transform: scale3D(0, 0, 1);
+  }
+}
+
+@keyframes sk-cubeGridScaleDelay {
+  0%, 70%, 100% {
+    -webkit-transform: scale3D(1, 1, 1);
+            transform: scale3D(1, 1, 1);
+  } 35% {
+    -webkit-transform: scale3D(0, 0, 1);
+            transform: scale3D(0, 0, 1);
+  }
+}
+
+

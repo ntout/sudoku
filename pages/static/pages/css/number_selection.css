@@ -1,0 +1,77 @@
+.value {
+    position: absolute;
+    width: 50px;
+    height:50px;
+    background: #EFCA08 ;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 45px;
+}
+
+.selection {
+    position: absolute;
+    width: 50px;
+    height:50px;
+    background: #EFCA08 ;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: repeat(3, 1fr);
+    /*grid-auto-rows: minmax(20px, 30px);*/
+    grid-template-areas:
+            "n1 n2 n3"
+            "n4 n5 n6"
+            "n7 n8 n9"
+            "n0 n0 n0";
+}
+
+.test1{
+    /*width: 30%;*/
+    /*height:20%;*/
+    background-color: #00A6A6;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.test1:hover {
+    background-color: #FF7733;
+}
+
+.n1 {grid-area: n1;}
+.n2 {grid-area: n2;}
+.n3 {grid-area: n3;}
+.n4 {grid-area: n4;}
+.n5 {grid-area: n5;}
+.n6 {grid-area: n6;}
+.n7 {grid-area: n7;}
+.n8 {grid-area: n8;}
+.n9 {grid-area: n9;}
+.n0 {grid-area: n0;}
+
+
+.selection {
+    transition: all .2s ease-in-out;
+}
+
+.value:hover {
+    display: none;
+}
+
+.selection:hover {
+    transform: scale(2);
+    /*display: grid;*/
+    z-index: 1;
+    padding: 5px;
+}
+
+.selection:hover .test1 {
+    display: flex;
+    cursor: pointer;
+}
+
+.test1:active{
+    background-color: yellow;
+}

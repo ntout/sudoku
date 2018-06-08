@@ -29,12 +29,24 @@ $.ajaxSetup({
 });
 
 
+function validate(evt) {
+  let theEvent = evt || window.event;
+  let key = theEvent.keyCode || theEvent.which;
+  key = String.fromCharCode( key );
+  let regex = /[1-9]/;
+  if( !regex.test(key) ) {
+    theEvent.returnValue = false;
+    if(theEvent.preventDefault) theEvent.preventDefault();
+  }
+}
+
+
 function generate_blank_puzzle () {
     for (let i = 0; i < 9; i++) {
         $('#input-puzzle').append("<tr class='row'></tr>")
     }
     for(let i = 0; i < 9; i++){
-        $('#input-puzzle .row').append("<td class='input-container'><input class='box' style='border:none' maxlength='1'></td>")
+        $('#input-puzzle .row').append("<td class='input-container'><input class='box' style='border:none' maxlength='1' onkeypress='validate(event)'></td>")
     }
 }
 
@@ -70,13 +82,17 @@ function import_solved_string(str, table){
         if(str[i] !== '0'){
             boxes[i].value = str[i];
         }
-}};
+}}
 
 
 function clear_puzzle(table){
     let boxes = $(table);
     for(let i=0; i < boxes.length; i++){
         boxes[i].value = '';
+    }
+    for (let i = 0; i < 81; i++) {
+        $('#input-puzzle .box')[i].style.color = '#000000';
+        $('#output-puzzle .box')[i].style.color = '#000000';
     }
 }
 
@@ -86,7 +102,7 @@ function readURL(instance) {
         let reader = new FileReader();
 
         reader.onload = function (e) {
-            $('#blah')
+            $('#image-upload')
                 .attr('src', e.target.result)
                 .width(300)
                 .height(300);
@@ -110,23 +126,33 @@ function imageToBase64(img) {
 }
 
 
+function change_color() {
+    for (let i = 0; i < 81; i++) {
+        if ($('#input-puzzle .box')[i].value.length === 1) {
+            $('#output-puzzle .box')[i].style.color = '#000099';
+        }
+    }}
 
 
 $('#img-file').on('change', function (e) {
+    $('#input-puzzle').toggleClass('loading');
+    clear_puzzle('#output-puzzle .box');
     readURL(this);
-   let fd = new FormData();
-   fd.append('image', this.files[0]);
+    let fd = new FormData();
+    fd.append('image', this.files[0]);
     $.ajax({
-        url: '/api/whatever/',
+        url: '/api/upload/',
         type: 'POST',
         data: fd,
         // async: false,
         contentType: false,
         processData: false,
         success: function(response){
+            clear_puzzle('#input-puzzle .box');
             console.log(response);
-            import_solved_string(response['puzzle'], '#input-puzzle .box')
-        }
+            import_solved_string(response['puzzle'], '#input-puzzle .box');
+            $('#input-puzzle').toggleClass('loading');
+        },
     })
 
 });
@@ -134,6 +160,8 @@ $('#img-file').on('change', function (e) {
 
 $('#btn-solve').on('click', function (){
     console.log(extract_string());
+    change_color();
+    $('#output-puzzle').toggleClass('loading');
     $.ajax({
         url: '/api/solver/',
         type: 'POST',
@@ -143,42 +171,28 @@ $('#btn-solve').on('click', function (){
         success: function(response){
             console.log(response);
             import_solved_string(response['puzzle'], '#output-puzzle .box');
-            console.log('solved')
-
+            console.log('solved');
+            $('#output-puzzle').toggleClass('loading');
         }
     })
 });
 
 
-// $('#btn-learn').on('click', function (){
-//     console.log('Learn was clicked');
-//     $.ajax({
-//         url: '/api/learner/',
-//         type: 'POST',
-//         data: {
-//             str: '000000000000000000000000000000000000000000000000000000000000000000000000000000000',
-//             iterations: $('#num_to_add').value,
-//         },
-//         success: function(response){
-//             console.log(response['puzzle']);
-//             // import_solved_string(response['puzzle'])
-//         }
-//     })
-// });
-
-
 $('#btn-generate').on('click', function () {
-   console.log('make was clicked');
-   clear_puzzle('#input-puzzle .box');
-   $.ajax({
-       url: '/api/generate/',
-       type: 'POST',
-       data:{},
-       success: function(response){
+   $('#input-puzzle').toggleClass('loading');
+    console.log('make was clicked');
+    clear_puzzle('#input-puzzle .box');
+    clear_puzzle('#output-puzzle .box');
+    $.ajax({
+        url: '/api/generate/',
+        type: 'POST',
+        data:{},
+        success: function(response){
            console.log(response);
            import_solved_string(response['puzzle'], '#input-puzzle .box');
+           $('#input-puzzle').toggleClass('loading');
        }
-   })
+    });
 });
 
 
@@ -197,20 +211,56 @@ $('#btn-count').on('click', function clue_count() {
 });
 
 
-// $('#btn-extract').on('click', function () {
-//    console.log('extract was clicked');
-//    clear_puzzle('#input-puzzle .box');
-//    $.ajax({
-//        url: '/api/extract/',
-//        type: 'POST',
-//        data:{},
-//        success: function(response){
-//            console.log(response);
-//            import_solved_string(response['puzzle'], '#input-puzzle .box');
-//        }
-//    })
-// });
+$('.test1').on('click', function () {
+    if ($(this).text() === 'blank'){
+        $('.value').text('')
+    }
+    else {
+        let val = $(this).text();
+        $('.value').text(val)
+    }
+});
 
+
+$('#input-puzzle').keyup(function () {
+    $.ajax({
+        url: '/api/validate/',
+        type: 'POST',
+        data: {
+            'str': extract_string()
+        },
+        success: function (response) {
+            for (let i = 0; i < 81; i++) {
+                $('#input-puzzle .box')[i].style.color = '#000000';
+            }
+            let data = $('#input-puzzle .box');
+            let invalid_sudoku = response['invalid'];
+            Object.keys(invalid_sudoku).forEach(function(key) {
+                console.log(invalid_sudoku[key]['box']);
+                data[invalid_sudoku[key]['box']].style.color = '#ff0000'
+
+
+            });
+        }
+    });
+});
 
 generate_blank_puzzle();
 generate_filled_solution();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

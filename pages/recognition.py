@@ -5,9 +5,12 @@ from statistics import mode
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-def find_puzzle(image_file_path):
+def read_in_image(image_file_path):
+    return cv2.imread(image_file_path)
+
+
+def find_puzzle(img):
     lists1 = []
-    img = cv2.imread(image_file_path)
     C, H, W = img.shape[::-1]
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     ret, thresh = cv2.threshold(gray, 205, 255, 0)
@@ -105,14 +108,6 @@ def determine_value(puzzle):
 def list_to_str(lst):
     return ''.join(lst[::-1])
 
-if __name__ == '__main__':
-    img2 = find_puzzle(os.path.join(BASE_DIR, 'media', 'img', 'sud2.jpg'))
-    resize = resize_puzzle(img2)
-    bold_puzzle_lines(resize)
-    cnt = find_puz_contours(resize)
-    cnt_list = filter_contours(cnt)
-    puzzle = extract_puz_numbers(resize, cnt, cnt_list)
-    puzList = determine_value(puzzle)
-    puzstr = list_to_str(puzList)
 
-    print(puzstr)
+if __name__ == '__main__':
+    pass

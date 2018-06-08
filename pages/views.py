@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 import os
 from pages.models import Puzzle, UploadedImage
-from pages.sudoku import solver, string_to_array, array_to_string, create_sudoku, fill_blank_puzzle
+from pages.sudoku import solver, string_to_array, array_to_string, create_sudoku, fill_blank_puzzle, verify_sudoku
 from pages import recognition
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -52,7 +52,8 @@ def generate(request):
 
 
 def helper(img):
-    img2 = recognition.find_puzzle(img.file.path)
+    cv_img = recognition.read_in_image(img.file.path)
+    img2 = recognition.find_puzzle(cv_img)
     resize = recognition.resize_puzzle(img2)
     recognition.bold_puzzle_lines(resize)
     cnt = recognition.find_puz_contours(resize)
@@ -76,8 +77,14 @@ def extract(request):
         return JsonResponse({"puzzle": puzstr})
 
 
-def whatever(request):
+def upload(request):
     if request.method == 'POST':
         image = UploadedImage.objects.create(file=request.FILES.get('image'))
         # print(image.file.path)
         return JsonResponse({'puzzle': helper(image)})
+
+
+def validate(request):
+    if request.method == 'POST':
+        intake_string = request.POST.get('str')
+        return JsonResponse({'invalid': verify_sudoku(intake_string)})

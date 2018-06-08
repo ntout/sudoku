@@ -9,5 +9,6 @@ class Puzzle(models.Model):
 def image_up_hand(instance, filename):
     return 'uploaded-img/{}'.format(filename)
 
+
 class UploadedImage(models.Model):
     file = models.ImageField(upload_to=image_up_hand)

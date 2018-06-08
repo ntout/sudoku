@@ -5,6 +5,8 @@
     <title>Sudoku Solver</title>
     <meta name="description" content="description">
     <link rel="stylesheet" type="text/css" href="static/pages/css/style.css">
+    <link rel="stylesheet" type="text/css" href="static/pages/css/loading_animation.css">
+    <link rel="stylesheet" type="text/css" href="static/pages/css/number_selection.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -13,31 +15,30 @@
 
 <h1 id="header">Sudoku Solver</h1>
 
+
 <div id="table-container">
-
-
 
     <div id="puzzle-container">
         <h3 class="puzzle-header">Working Puzzle</h3>
-        <table id="input-puzzle"></table>
+        <table id="input-puzzle" class="puz-table"></table>
     </div>
-
 
     <div id="solution-container">
         <h3 class="puzzle-header">Solution</h3>
-        <table id="output-puzzle"></table>
+        <table id="output-puzzle" class="puz-table"></table>
     </div>
 
     <div id="img-container">
         <h3 class="puzzle-header">Image</h3>
-        <img id="blah" src="#" alt="your image" />
+        <img id="image-upload" src="#" alt="your image" />
     </div>
+
 </div>
 
 <div id="btn-container">
     <button id="btn-solve">SOLVE</button>
 
-    <button id="btn-learn">LEARN</button>
+    <!--<button id="btn-learn">LEARN</button>-->
 
     <button id="btn-generate">MAKE</button>
 
@@ -46,10 +47,12 @@
     <button id="btn-count">COUNT</button>
     <input type='file' id="img-file">
 
-    <!--<input type='file' onchange="readURL(this);" />-->
+    <button id="btn-test">TEST</button>
 
-    <button id="btn-extract">EXTRACT</button>
 </div>
+
+
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="static/pages/javascript/main.js"></script>

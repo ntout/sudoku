@@ -168,20 +168,28 @@ def replace_char_str(string, char, index):
 
 
 def verify_sudoku(string):
-    if len(string) != 81:
-        return False
     temp = string_to_array(string)
     col = get_column(temp)
+    error_dict = {}
+    n = 0
     for i in range(9):
         for j in range(9):
+            error_dict.update({n: {'box': n, 'value': -1, 'row': -1, 'column': -1, 'section': -1}})
             if temp[i][j] != 0:
                 if (temp[i] == temp[i][j]).sum() > 1:
-                    return False
-                elif col[j].count(temp[i][j]) > 1:
-                    return False
-                elif (section_num(make_sections(temp), i, j) == temp[i][j]).sum() > 1:
-                    return False
-    return True
+                    error_dict[n]['row'] = i
+                    error_dict[n]['value'] = int(temp[i][j])
+                if col[j].count(temp[i][j]) > 1:
+                    error_dict[n]['column'] = j
+                    error_dict[n]['value'] = int(temp[i][j])
+                if (section_num(make_sections(temp), i, j) == temp[i][j]).sum() > 1:
+                    error_dict[n]['section'] = 1
+                    error_dict[n]['value'] = int(temp[i][j])
+            n += 1
+    for num in range(81):
+        if error_dict[num]['value'] is -1:
+            error_dict.pop(num, None)
+    return error_dict
 
 
 def fill_blank_puzzle():
@@ -194,7 +202,6 @@ def fill_blank_puzzle():
 def create_sudoku(filled_string):
     filled_list = list(filled_string)
     num_removed = randint(23, 32)
-    print(81 - num_removed * 2)
     for n in range(num_removed):
         n += 1
         i = randint(0, 39)
@@ -206,10 +213,10 @@ def create_sudoku(filled_string):
 
 
 if __name__ == '__main__':
-    # sud3 = '304000000270463108010090003720000000000006900059184000907000302182300400540600070'
+    sud3 = '304000300270463108010090003720000500004006900059184000907000302182300400540600070'
     # print_board(solver(string_to_array(sud3)))
     # solver(sud1)
     # solver(puzzle)
     # solver(sud2)
     # print(create_sudoku())
-    print(create_sudoku(fill_blank_puzzle()))
+    print(verify_sudoku(sud3))
