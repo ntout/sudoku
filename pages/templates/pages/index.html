@@ -12,43 +12,40 @@
 <body>
 
 
+<h1 id="header">Sudoku Solver</h1>
 
-    <h1 id="header">Sudoku Solver</h1>
+<div id="content">
+    <div id="working-container">
+        <div id="table-container">
+            <!--<div id=""></div>-->
+            <div id="puzzle-container" class="table">
+                <!--<h3 class="puzzle-header">Working Sudoku</h3>-->
+                <table id="input-puzzle" class="puz-table"></table>
+            </div>
 
-    <div id="content">
-        <div id="working-container">
-            <div id="table-container">
-                <!--<div id=""></div>-->
-                <div id="puzzle-container" class="table">
-                    <!--<h3 class="puzzle-header">Working Sudoku</h3>-->
-                    <table id="input-puzzle" class="puz-table"></table>
-                </div>
-
-                <div id="solution-container" hidden class="table">
-                    <!--<h3 class="puzzle-header">Solution</h3>-->
-                    <table id="output-puzzle" class="puz-table"></table>
-                </div>
+            <div id="solution-container" hidden class="table">
+                <!--<h3 class="puzzle-header">Solution</h3>-->
+                <table id="output-puzzle" class="puz-table"></table>
             </div>
         </div>
-
-        <div id="img-container">
-            <div id="btn-container">
-                <div id="btn-solve" class="btn">SOLVE</div>
-                <div id="btn-generate" class="btn">GENERATE</div>
-                <div id="btn-clear" class="btn">CLEAR</div>
-            </div>
-            <img id="image-upload" src="https://dummyimage.com/300x300/0C7C59/ffffff.png&text=upload+image" alt="your image" />
-            <input type='file' id="img-file" >
-        </div>
-
     </div>
 
+    <div id="img-container">
+        <div id="btn-container">
+            <div id="btn-solve" class="btn">SOLVE</div>
+            <div id="btn-generate" class="btn">GENERATE</div>
+            <div id="btn-clear" class="btn">CLEAR</div>
+        </div>
+        <img id="image-upload" src="https://dummyimage.com/300x300/0C7C59/ffffff.png&text=upload+image"
+             alt="your image"/>
+        <input type='file' id="img-file">
+    </div>
 
-
-
+</div>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <script src="static/pages/javascript/main.js"></script>
 </body>
 </html>
