@@ -1,6 +1,6 @@
 # Sudoku Solver
 
-Solve a sudoku puzzle by typing in puzzle's numbers or uploading an image.  Program runs through z  When a puzzle is solved, it's solution is stored in a Django database.    
+Solve a sudoku puzzle by typing in puzzle's numbers or uploading an image.  When a puzzle is solved, it's solution is stored in a Django database so it can be solved instantly the next time.    
 
 ## Getting Started
 
